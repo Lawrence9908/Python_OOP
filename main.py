@@ -1,17 +1,34 @@
 class Item:
-    def calculate_total_price(self, x, y):
-        return x * y
+    """
+    Defines a class Item
+    """
+    # class attribute
+    pay_rate = 0.2 # discount after buying 20% of the product
+    
+    def __init__(self, name: str, price: float, quantity = 0):
+        # Run validation to the recieved arguments
+        assert price >= 0, f"price {price} is not greater than Zero"
+        assert quantity >= 0, f"Qunatity {quantity} not greater that or equla to zero"
+
+        # Assign to self object
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+
+    def calculate_total_price(self):
+        """
+        The method calculate the total of quantity
+
+        args:
+        
+        return: i
+        """
+        return self.price * self.quantity
 
 
-item1 = Item()
-item1.name = "Phone"
-item1.price = 100
-item1.quantity = 5
-print(item1.calculate_total_price(item1.price, item1.quantity))
+item1 = Item("Phone", 100, 4)
+item2 = Item("Laptop", 3000, 6)
 
-item2 = Item()
-item2.name = "Laptop"
-item2.price = 5000
-item2.quantity = 5
-print(item2.calculate_total_price(item1.price, item1.quantity))
-
+print(Item.pay_rate)
+print(item1.pay_rate)
+print(item2.pay_rate)
