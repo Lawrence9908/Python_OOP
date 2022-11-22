@@ -32,10 +32,17 @@ class Item:
             items = list(reader)
 
         for item in items:
-            print(item)
+            # print(item)
+            Item(
+                name = item.get("name"),
+                price = float(item.get("price")),
+                quantity = int(item.get("quantity")), 
+            )
 
 
     def __repr__(self):
         return f"Item ('{self.name}','{self.price}','{self.quantity}')"
 
+# print(Item.all)
+Item.instantiate_from_csv()
 print(Item.all)
